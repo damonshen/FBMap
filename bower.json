@@ -1,0 +1,17 @@
+{
+  "name": "FBMap",
+  "version": "0.0.0",
+  "authors": [
+    "damonshen <thanatos1710@hotmail.com>"
+  ],
+  "main": "asserts/js",
+  "license": "MIT",
+  "devDependencies": {
+    "jquery": "~2.1.1"
+  },
+  "dependencies": {
+    "less": "~1.7.0",
+    "bootstrap": "~3.1.1",
+    "3l": "~1.4.4"
+  }
+}

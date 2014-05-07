@@ -1,0 +1,41 @@
+@import '../js/plugins/bootstrap/dist/css/bootstrap.css';
+@import './grid.less';
+@import '../js/plugins/bootstrap/dist/css/bootstrap.min.css';
+@import '../js/plugins/3l/3L/3L.less';
+
+@total-width: 100%;
+
+.content{
+  background-color: #333333;
+  .column(8);
+  .push(2);
+  font-family: 'Montserrat', sans-serif;
+}
+.header{
+  font-size: 50px;
+  text-align: center;
+}
+.menu-bar{
+  ul li{
+    .row(8);
+    .column(2,8);
+    padding: 5px;
+    text-align: center;
+    ul li{
+      .row(2);
+      .column(2,2);
+    }
+  }
+}
+
+.main{
+  .row(8);
+  background-color: #555555;
+  .map{
+    .column(6,8);
+  }
+  .sidebar{
+    .column(2,8);
+    .push(6);
+  }
+}

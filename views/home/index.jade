@@ -1,0 +1,23 @@
+extends ../layout
+
+block styles
+  link(href='http://sailsjs.org/styles/fonts.css', rel='stylesheet')
+  link(href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css')
+
+block body
+  #fb-root
+  .content
+    .header FBMap
+    .menu-bar
+      ul
+        li
+          a.btn.btn-danger home
+        li
+          a.btn.btn-primary(href='javascript:FB.login();') introduction
+        li 
+          a.btn.btn-info(href='javascript:testAPI();') set
+    .main
+      .map
+      .sideBar
+        .fb-login-button(data-max-rows="1" data-size="medium" data-auto-logout-link="true")
+  #status
