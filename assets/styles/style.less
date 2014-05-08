@@ -1,23 +1,25 @@
-@import '../js/plugins/bootstrap/dist/css/bootstrap.css';
 @import './grid.less';
 @import '../js/plugins/bootstrap/dist/css/bootstrap.min.css';
 @import '../js/plugins/3l/3L/3L.less';
 
 @total-width: 100%;
 
+//initialize for google map
+
+
 .content{
-  background-color: #333333;
+  background-color: #bbbbbb;
   .column(8);
   .push(2);
   font-family: 'Montserrat', sans-serif;
 }
 .header{
+  .row(8);
   font-size: 50px;
   text-align: center;
 }
 .menu-bar{
   ul li{
-    .row(8);
     .column(2,8);
     padding: 5px;
     text-align: center;
@@ -33,9 +35,10 @@
   background-color: #555555;
   .map{
     .column(6,8);
+    height: 100%;
   }
   .sidebar{
+    background-color: yellow;
     .column(2,8);
-    .push(6);
   }
 }

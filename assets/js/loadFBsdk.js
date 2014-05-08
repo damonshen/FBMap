@@ -8,9 +8,9 @@
     if (response.status === "connected") {
       testAPI();
     } else if (response.status === "not_authorized") {
-      document.getElementById("status").innerHTML = "Please log " + "into this app.";
+
     } else {
-      document.getElementById("status").innerHTML = "Please log " + "into Facebook.";
+
     }
   };
 
@@ -24,7 +24,6 @@
     console.log("Welcome!  Fetching your information.... ");
     FB.api("/me", function(response) {
       console.log("Good to see you, " + response.name + ".");
-      document.getElementById("status").innerHTML = "Good to see you, " + response.name;
     });
   };
 
