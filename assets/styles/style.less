@@ -17,10 +17,16 @@
   .row(8);
   font-size: 50px;
   text-align: center;
+  .title{
+    margin-top: 20px;
+  }
 }
 .menu-bar{
   ul li{
     .column(2,8);
+    a{
+      .column(2,2);
+    }
     padding: 5px;
     text-align: center;
     ul li{
@@ -38,7 +44,14 @@
     height: 100%;
   }
   .sidebar{
-    background-color: yellow;
     .column(2,8);
+    ul{
+      .row(2);
+      li{
+        a{
+          .column(2,2);
+        }
+      }
+    }
   }
 }

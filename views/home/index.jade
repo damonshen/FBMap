@@ -9,7 +9,8 @@ block body
   body(onload='initialize()')
     #fb-root
       .content
-        .header FBMap
+        .header 
+          .title FBMap
           .menu-bar
             ul
               li
@@ -19,8 +20,13 @@ block body
               li 
                 a.btn.btn-info(href='javascript:testAPI();') set
               li
-                .fb-login-button(data-max-rows="1" data-size="medium" data-auto-logout-link="true")
+                .fb-login-button(data-max-rows="5" data-size="medium" data-auto-logout-link="true")
         .main
           #map_canvas.map
           .sideBar
+            ul
+              li
+                a.btn.btn-danger btn1
+              li
+                a.btn.btn-info btn2
 
