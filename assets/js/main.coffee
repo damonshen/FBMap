@@ -12,7 +12,7 @@ FB.login(
 )
 ###
 
-getFriends = () ->
+getFriends = ()->
   FB.api(
     {
       method: 'fql.query'
@@ -20,26 +20,21 @@ getFriends = () ->
     },
     (response)->
       data = JSON.stringify(response)
-      console.log(data)
+      data = JSON.parse(data)
+      console.log(data + data.length)
   )
 
-getFriendsBygraph = ()->
-  FB.api(
-    '/me/friends',
-    (response)->
-      data = JSON.stringify(response)
-      console.log(data)
-  )
-
-getCheckins = () ->
+getCheckins = ()->
   FB.api(
     {
       method: 'fql.query'
-      query: 'select message, description, type, actor_id from stream where source_id in ( SELECT uid2 from friend where uid1 = me())'
+      query: 'select message, description, type, actor_id from stream where source_id in ( SELECT uid2 from friend where uid1 = me()) limit 300'
     },
     (response)->
       data = JSON.stringify(response)
-      console.log(data)
+      console.log data
+      data = JSON.parse(data)
+      console.log(data.length)
   )
 
 
