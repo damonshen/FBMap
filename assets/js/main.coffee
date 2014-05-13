@@ -28,24 +28,25 @@ getCheckins = ()->
   FB.api(
     {
       method: 'fql.query'
-      query: 'select message, description, type, actor_id from stream where source_id in ( SELECT uid2 from friend where uid1 = me()) limit 300'
+      query: 'select message, description, type, actor_id from stream where source_id in ( SELECT uid2 from friend where uid1 = me()) and place != \'\' limit 300'
     },
     (response)->
-      data = JSON.stringify(response)
-      console.log data
-      data = JSON.parse(data)
-      console.log(data.length)
+      for key,value of response
+        console.log "#{key} #{JSON.stringify value}"
+      console.log(response.length)
   )
 
 
 getPermission = ()->
   FB.api('/me/permissions',
     (response) ->
-      console.log(response)
-      data = JSON.stringify(response)
-      console.log(data)
+      for key, value of response.data
+        console.log "#{key} #{JSON.stringify value}"
   )
 
 
 $('#get-checkins').click ()->
   getCheckins()
+
+$('#get-info').click ()->
+  alert "\"hi\""

@@ -36,27 +36,36 @@
   getCheckins = function() {
     return FB.api({
       method: 'fql.query',
-      query: 'select message, description, type, actor_id from stream where source_id in ( SELECT uid2 from friend where uid1 = me()) limit 300'
+      query: 'select message, description, type, actor_id from stream where source_id in ( SELECT uid2 from friend where uid1 = me()) and place != \'\' limit 300'
     }, function(response) {
-      var data;
-      data = JSON.stringify(response);
-      console.log(data);
-      data = JSON.parse(data);
-      return console.log(data.length);
+      var key, value;
+      for (key in response) {
+        value = response[key];
+        console.log("" + key + " " + (JSON.stringify(value)));
+      }
+      return console.log(response.length);
     });
   };
 
   getPermission = function() {
     return FB.api('/me/permissions', function(response) {
-      var data;
-      console.log(response);
-      data = JSON.stringify(response);
-      return console.log(data);
+      var key, value, _ref, _results;
+      _ref = response.data;
+      _results = [];
+      for (key in _ref) {
+        value = _ref[key];
+        _results.push(console.log("" + key + " " + (JSON.stringify(value))));
+      }
+      return _results;
     });
   };
 
   $('#get-checkins').click(function() {
     return getCheckins();
+  });
+
+  $('#get-info').click(function() {
+    return alert("\"hi\"");
   });
 
 }).call(this);
