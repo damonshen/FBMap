@@ -20,7 +20,7 @@ block body
               li 
                 a.btn.btn-info(href='javascript:testAPI();') set
               li
-                .fb-login-button(data-max-rows="5" data-size="medium" data-auto-logout-link="true")
+                .fb-login-button(data-max-rows="1" data-size="medium" data-auto-logout-link="true" scope="publish_actions,user_likes,user_groups")
         .main
           #map_canvas.map
           .sideBar
@@ -29,4 +29,6 @@ block body
                 a#get-checkins.btn.btn-danger btn1
               li
                 a#get-info.btn.btn-info btn2
+              li
+                a#get-access-token.btn.btn-default get access token
 

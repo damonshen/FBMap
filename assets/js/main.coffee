@@ -4,13 +4,6 @@ initialize = ->
     zoom: 8
     mapTypeId: google.maps.MapTypeId.ROADMAP
   map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions)
-###
-FB.login(
-  (response) ->
-    console.log response
-  {scope: 'email,user_likes'}
-)
-###
 
 getFriends = ()->
   FB.api(
@@ -28,7 +21,7 @@ getCheckins = ()->
   FB.api(
     {
       method: 'fql.query'
-      query: 'select message, description, type, actor_id from stream where source_id in ( SELECT uid2 from friend where uid1 = me()) and place != \'\' limit 300'
+      query: 'select message, type, actor_id, place from stream where source_id in ( SELECT uid2 from friend where uid1 = me()) and place and tagged_ids limit 300'
     },
     (response)->
       for key,value of response
@@ -36,6 +29,13 @@ getCheckins = ()->
       console.log(response.length)
   )
 
+getFriendsLikes = ()->
+  FB.api('/me/taggable_friends',
+    (response) ->
+      console.log JSON.stringify response
+      for key, value of response.data
+        console.log "#{key} #{JSON.stringify value}"
+  )
 
 getPermission = ()->
   FB.api('/me/permissions',
@@ -44,9 +44,26 @@ getPermission = ()->
         console.log "#{key} #{JSON.stringify value}"
   )
 
+comment = ()->
+  FB.api(
+    "/681775615215777_681777018548970/comments",
+    "POST",
+    {
+      "object": {
+        "message": "test"
+      }
+    },
+    (response) ->
+      console.log JSON.stringify response
+  )
+
+
 
 $('#get-checkins').click ()->
   getCheckins()
 
 $('#get-info').click ()->
   alert "\"hi\""
+
+$('#get-access-token').click ()->
+    console.log response.authResponse.accessToken
